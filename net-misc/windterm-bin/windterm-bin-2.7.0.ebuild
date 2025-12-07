@@ -7,7 +7,7 @@ inherit desktop xdg
 
 PKG_PN="WindTerm"
 PKG_ARCH="x86_64"
-PKG_FILE="${PKG_PN}_${PV}_Linux_Portable_${PKG_ARCH}.tar.gz"
+PKG_FILE="${PKG_PN}_${PV}_Linux_Portable_${PKG_ARCH}.zip"
 
 DESCRIPTION="A quicker and better SSH/Telnet/Serial/Shell/Sftp client"
 HOMEPAGE="https://github.com/kingToolbox/WindTerm"
