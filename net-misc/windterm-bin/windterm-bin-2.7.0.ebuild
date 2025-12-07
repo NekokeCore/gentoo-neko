@@ -9,7 +9,7 @@ PKG_PN="WindTerm"
 PKG_ARCH="x86_64"
 PKG_FILE="${PKG_PN}_${PV}_Linux_Portable_${PKG_ARCH}.zip"
 
-DESCRIPTION="A quicker and better SSH/Telnet/Serial/Shell/Sftp client"
+DESCRIPTION="A professional cross-platform SSH/Sftp/Shell/Telnet/Serial terminal"
 HOMEPAGE="https://github.com/kingToolbox/WindTerm"
 SRC_URI="https://github.com/kingToolbox/WindTerm/releases/download/${PV}/${PKG_FILE}"
 
@@ -61,10 +61,10 @@ src_install() {
 	EOF
 	dobin "${T}/windterm"
 
+	domenu "${ED}/${install_dir}/windterm.desktop"
+
+	# 安装图标 (只要你的源码包里有 windterm.png)
 	if [[ -f "windterm.png" ]]; then
 		doicon -s 256 "windterm.png"
-		make_desktop_entry "windterm" "WindTerm" "windterm" "System;TerminalEmulator;Network;"
-	else
-		make_desktop_entry "windterm" "WindTerm" "" "System;TerminalEmulator;Network;"
 	fi
 }
