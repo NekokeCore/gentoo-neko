@@ -21,10 +21,19 @@ KEYWORDS="~amd64"
 RESTRICT="strip mirror"
 
 RDEPEND="
-	sys-libs/zlib
 	x11-libs/libX11
+	x11-libs/libXtst
 	x11-libs/libxcb
-	virtual/libcrypt
+	x11-libs/libXext
+	x11-libs/libXau
+	x11-libs/libXdmcp
+
+	media-libs/libglvnd
+	media-libs/libpulse
+
+	dev-libs/glib:2
+	virtual/krb5
+	sys-apps/dbus
 "
 DEPEND="${RDEPEND}"
 
@@ -41,6 +50,7 @@ src_install() {
 		cd "${install_dir}"
 		# Force use XWayland
 		# export QT_QPA_PLATFORM=xcb
+		export LD_LIBRARY_PATH="\${PWD}/lib:\${LD_LIBRARY_PATH}"
 		exec ./WindTerm "\$@"
 	EOF
 	dobin "${T}/windterm"
