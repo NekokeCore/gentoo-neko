@@ -43,6 +43,12 @@ src_install() {
 
 	cp -R . "${ED}/${install_dir}" || die "Install failed"
 
+	cat > "${ED}/${install_dir}/profiles.config" <<-EOF
+		{
+		    "path" : "~"
+		}
+	EOF
+
 	fperms 0755 "${install_dir}/WindTerm"
 
 	cat > "${T}/windterm" <<-EOF
