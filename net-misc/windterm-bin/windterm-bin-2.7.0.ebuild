@@ -18,6 +18,7 @@ S="${WORKDIR}/${PKG_PN}_${PV}"
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64"
+IUSE="wayland"
 RESTRICT="strip mirror"
 
 RDEPEND="
@@ -54,11 +55,17 @@ src_install() {
 	cat > "${T}/windterm" <<-EOF
 		#!/bin/sh
 		cd "${install_dir}"
-		# Force use XWayland
-		# export QT_QPA_PLATFORM=xcb
+	EOF
+
+	if ! use wayland; then
+        echo 'export QT_QPA_PLATFORM=xcb' >> "${T}/windterm"
+    fi
+
+	cat >> "${T}/windterm" <<-EOF
 		export LD_LIBRARY_PATH="\${PWD}/lib:\${LD_LIBRARY_PATH}"
 		exec ./WindTerm "\$@"
 	EOF
+
 	dobin "${T}/windterm"
 
 	domenu "${ED}/${install_dir}/windterm.desktop"
