@@ -13,7 +13,7 @@ DESCRIPTION="A quicker and better SSH/Telnet/Serial/Shell/Sftp client"
 HOMEPAGE="https://github.com/kingToolbox/WindTerm"
 SRC_URI="https://github.com/kingToolbox/WindTerm/releases/download/${PV}/${PKG_FILE}"
 
-S="${WORKDIR}/${PKG_PN}_${PV}_Linux_Portable_${PKG_ARCH}"
+S="${WORKDIR}/${PKG_PN}_${PV}"
 
 LICENSE="Apache-2.0"
 SLOT="0"
