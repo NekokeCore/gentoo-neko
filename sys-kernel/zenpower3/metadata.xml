@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+    <maintainer type="person">
+        <email>nekokecore@emtips.net</email>
+        <name>Ashley Lee</name>
+        <description>Main developer of the gentoo-neko overlay</description>
+    </maintainer>
+
+    <upstream>
+        <remote-id type="github">AliEmreSenel/zenpower3</remote-id>
+        <bugs-to>https://github.com/AliEmreSenel/zenpower3</bugs-to>
+    </upstream>
+</pkgmetadata>

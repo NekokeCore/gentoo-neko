@@ -44,6 +44,10 @@ src_install() {
 
 	cp -R . "${ED}/${install_dir}" || die "Install failed"
 
+	rm -rf "${ED}/${install_dir}/temp"
+
+	dosym /tmp "${install_dir}/temp"
+
 	cat > "${ED}/${install_dir}/profiles.config" <<-EOF
 		{
 		    "path" : "~"
