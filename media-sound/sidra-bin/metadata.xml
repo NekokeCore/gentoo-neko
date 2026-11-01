@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+    <maintainer type="person">
+        <email>nekokecore@emtips.net</email>
+        <name>Ashley Lee</name>
+        <description>Main developer of the gentoo-neko overlay</description>
+    </maintainer>
+
+    <longdescription>
+        Sidra is an Apple Music desktop client that wraps music.apple.com in a
+        CastLabs Electron build with Widevine DRM support. It provides native
+        Linux integration through MPRIS, desktop notifications, a system tray
+        indicator, Last.fm scrobbling and Discord Rich Presence.
+    </longdescription>
+
+    <upstream>
+        <remote-id type="github">wimpysworld/sidra</remote-id>
+        <bugs-to>https://github.com/wimpysworld/sidra/issues</bugs-to>
+    </upstream>
+</pkgmetadata>
