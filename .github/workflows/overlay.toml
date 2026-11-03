@@ -1,0 +1,6 @@
+["dev-db/dbx-bin"]
+source = "github"
+github = "t8y2/dbx"
+use_latest_release = true
+prefix = "v"
+github_account = "NekokeCore"
