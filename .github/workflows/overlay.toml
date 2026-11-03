@@ -4,3 +4,8 @@ github = "t8y2/dbx"
 use_latest_release = true
 prefix = "v"
 github_account = "NekokeCore"
+["net-im/gugu-bin"]
+source = "regex"
+url = "https://download.gugu.nextmind.space/releases/desktop/latest/latest-linux.yml"
+regex = '(?m)^version: ([0-9]+\.[0-9]+\.[0-9]+)$'
+github_account = "NekokeCore"
