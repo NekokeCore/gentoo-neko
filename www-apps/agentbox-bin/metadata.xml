@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+    <maintainer type="person">
+        <email>nekokecore@emtips.net</email>
+        <name>Ashley Lee</name>
+    </maintainer>
+    <longdescription>
+        Agentbox is a self-hosted web console for Claude Code and Codex
+        workspaces. Each workspace runs in a Docker container, and abox-link
+        clients tunnel the server into a user's own network.
+    </longdescription>
+    <upstream>
+        <remote-id type="github">devilcoolyue/agentbox</remote-id>
+        <bugs-to>https://github.com/devilcoolyue/agentbox/issues</bugs-to>
+    </upstream>
+</pkgmetadata>

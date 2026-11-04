@@ -1,0 +1,21 @@
+#!/sbin/openrc-run
+# Copyright 2026 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+description="agentbox containerized AI coding workbench"
+
+command="/opt/agentbox/agentbox"
+command_args="-config /etc/agentbox/config.json"
+command_background="yes"
+pidfile="/run/${RC_SVCNAME}.pid"
+
+required_files="/etc/agentbox/config.json"
+
+depend() {
+	need localmount
+	use net docker
+}
+
+start_pre() {
+	checkpath -d -m 0700 /var/cache/agentbox
+}

@@ -1,0 +1,7 @@
+{
+  "listen": "127.0.0.1:8180",
+  "auth_token": "",
+  "data_dir": "/var/lib/agentbox",
+  "cache_dir": "/var/cache/agentbox",
+  "agent_image": "agentbox-agent:latest"
+}

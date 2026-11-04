@@ -14,3 +14,15 @@ source = "regex"
 url = "https://roxybrowser.cn/app_statistics/get_version_list?os=Linux&osBit=64&page_index=1&page_size=10"
 regex = '"versionType"\s*:\s*"app"[^}]*"version"\s*:\s*"([0-9]+\.[0-9]+\.[0-9]+)"'
 github_account = "NekokeCore"
+["net-vpn/abox-link-bin"]
+source = "github"
+github = "devilcoolyue/agentbox"
+use_latest_release = true
+prefix = "v"
+github_account = "NekokeCore"
+["www-apps/agentbox-bin"]
+source = "github"
+github = "devilcoolyue/agentbox"
+use_latest_release = true
+prefix = "v"
+github_account = "NekokeCore"

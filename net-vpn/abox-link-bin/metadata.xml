@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+    <maintainer type="person">
+        <email>nekokecore@emtips.net</email>
+        <name>Ashley Lee</name>
+    </maintainer>
+    <longdescription>
+        abox-link runs on a user's own machine and tunnels its local network to
+        that user's containers on an agentbox server. The whitelist is
+        default-deny, and the control panel listens on loopback only.
+    </longdescription>
+    <upstream>
+        <remote-id type="github">devilcoolyue/agentbox</remote-id>
+        <bugs-to>https://github.com/devilcoolyue/agentbox/issues</bugs-to>
+    </upstream>
+</pkgmetadata>
