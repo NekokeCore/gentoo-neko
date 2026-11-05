@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>nekokecore@emtips.net</email>
+		<name>Ashley Lee</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">t8y2/motty</remote-id>
+		<bugs-to>https://github.com/t8y2/motty/issues</bugs-to>
+	</upstream>
+</pkgmetadata>
