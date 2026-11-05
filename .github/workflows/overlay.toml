@@ -32,3 +32,9 @@ github = "GaryOAO/UUWay"
 use_latest_release = true
 prefix = "v"
 github_account = "NekokeCore"
+["net-misc/uu-remote-linux-bin"]
+source = "github"
+github = "VallierDev/uu-remote-linux"
+use_latest_release = true
+prefix = "v"
+github_account = "NekokeCore"
