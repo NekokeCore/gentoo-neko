@@ -32,7 +32,7 @@ RDEPEND="${PYTHON_DEPS}
 	media-libs/gstreamer:1.0
 	media-libs/libva
 	media-libs/vulkan-loader
-	media-video/ffmpeg:0/58.60.60[vaapi]
+	media-video/ffmpeg-compat:6/58.60.60[vaapi]
 	media-video/pipewire
 	sys-apps/systemd
 	x11-libs/gdk-pixbuf:2[introspection]
@@ -44,6 +44,8 @@ RDEPEND="${PYTHON_DEPS}
 	x11-misc/xvfb-run
 "
 
+BDEPEND="dev-util/patchelf"
+
 QA_PREBUILT="
 	usr/lib/uuway/build/*
 	usr/lib/uuway/fcitx5/*
@@ -51,6 +53,13 @@ QA_PREBUILT="
 
 src_prepare() {
 	default
+
+	local binary
+	for binary in uu-pipewire-native-probe uu-vaapi-probe uurb-nvenc-encode.dll.so; do
+		patchelf --set-rpath "${EPREFIX}/usr/lib/ffmpeg6/$(get_libdir)" \
+			"usr/lib/uuway/build/backends/amd/native-presenter/${binary}" || die
+	done
+
 	sed -i 's/"target": "ubuntu"/"target": "gentoo"/' usr/lib/uuway/package-info.json || die
 }
 
