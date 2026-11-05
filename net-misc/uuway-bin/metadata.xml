@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>nekokecore@emtips.net</email>
+		<name>Ashley Lee</name>
+	</maintainer>
+	<longdescription>
+		UUWay runs the official NetEase UU Remote Windows host under Wine and
+		replaces the Windows interfaces it relies on with native Linux ones:
+		Wayland screen capture through the PipeWire portal, NVENC or VA-API
+		encoding, uinput keyboard and mouse injection, Fcitx5 text input,
+		clipboard and file transfer, and a local login shell as the remote
+		terminal. This package installs the upstream Ubuntu build, so it needs
+		a GNOME Wayland or Hyprland session with systemd user services.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">GaryOAO/UUWay</remote-id>
+		<bugs-to>https://github.com/GaryOAO/UUWay/issues</bugs-to>
+	</upstream>
+</pkgmetadata>
