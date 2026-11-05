@@ -26,3 +26,9 @@ github = "devilcoolyue/agentbox"
 use_latest_release = true
 prefix = "v"
 github_account = "NekokeCore"
+["net-misc/uuway-bin"]
+source = "github"
+github = "GaryOAO/UUWay"
+use_latest_release = true
+prefix = "v"
+github_account = "NekokeCore"

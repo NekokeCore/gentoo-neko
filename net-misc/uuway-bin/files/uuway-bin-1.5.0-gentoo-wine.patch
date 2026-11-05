@@ -1,0 +1,67 @@
+--- a/usr/lib/uuway/scripts/uuway_platform.py
++++ b/usr/lib/uuway/scripts/uuway_platform.py
+@@ -34,6 +34,8 @@
+ def wine_directory():
+     if is_arch():
+         return Path.home() / '.local/share/uuway/wine11/usr/bin'
++    if is_gentoo():
++        return Path('/usr/bin')
+     if os_release().get('ID') == 'fedora' and os_release().get('VERSION_ID') == '45':
+         return Path('/opt/uuway-wine11/usr/bin')
+     return PRIVATE_WINE if (PRIVATE_WINE / 'wine').is_file() else Path('/opt/wine-stable/bin')
+@@ -44,6 +46,10 @@
+     return release.get('ID') == 'arch' or 'arch' in release.get('ID_LIKE', '').split()
+ 
+ 
++def is_gentoo():
++    return os_release().get('ID') == 'gentoo'
++
++
+ def wine_pin_path():
+     return Path('/etc/dnf/versionlock.toml') if os_release().get('ID') == 'fedora' else Path('/etc/apt/preferences.d/uuway-wine')
+ 
+@@ -80,6 +86,8 @@
+ 
+ def uninstall_command(release=None):
+     release = os_release() if release is None else release
++    if release.get('ID') == 'gentoo':
++        return 'sudo emerge --unmerge net-misc/uuway-bin'
+     if release.get('ID') == 'fedora':
+         return 'sudo dnf remove uuway'
+     if release.get('ID') == 'arch' or 'arch' in release.get('ID_LIKE', '').split():
+--- a/usr/lib/uuway/scripts/uuway_cli.py
++++ b/usr/lib/uuway/scripts/uuway_cli.py
+@@ -393,7 +393,7 @@
+ 
+ def wine_done(ctx):
+     version = wine_version(ctx)
+-    return platform.wine_compatible(version) and (platform.private_wine() or WINE_DIR == platform.PRIVATE_WINE or WINE_PIN.is_file())
++    return platform.wine_compatible(version) and (platform.private_wine() or platform.is_gentoo() or WINE_DIR == platform.PRIVATE_WINE or WINE_PIN.is_file())
+ 
+ 
+ def wine_pin_command(ctx):
+@@ -412,6 +412,11 @@
+         if not ctx.dry_run and not platform.wine_compatible(wine_version(ctx)):
+             raise SetupError('Wine 11.0 安装失败。')
+         return
++    if platform.is_gentoo():
++        if platform.wine_compatible(version):
++            ok('系统 Wine 11.0（由 =app-emulation/wine-vanilla-11.0 提供）')
++            return
++        raise SetupError('需要 =app-emulation/wine-vanilla-11.0，请先用 emerge 安装。')
+     if platform.os_release().get('ID') == 'fedora':
+         if ctx.confirm('现在下载官方预编译包，安装固定的 Wine 11.0？'):
+             release = platform.os_release()
+@@ -1401,10 +1406,9 @@
+     check('ok' if platform.wine_compatible(version) else 'fail', 'Wine 11.0',
+           version or f'没有找到 {WINE_DIR / "wine"}（运行 uuway setup）')
+     if platform.wine_compatible(version):
+-        pinned = platform.private_wine() or WINE_DIR == platform.PRIVATE_WINE or WINE_PIN.is_file()
++        pinned = platform.private_wine() or platform.is_gentoo() or WINE_DIR == platform.PRIVATE_WINE or WINE_PIN.is_file()
+         check('ok' if pinned else 'warn', 'Wine 已固定在 11.0 系列',
+-              str(WINE_DIR) if platform.private_wine() or WINE_DIR == platform.PRIVATE_WINE else
+-              str(WINE_PIN) if WINE_PIN.is_file() else '升级 WineHQ 可能让 UUWay 无法采集画面；运行 uuway setup --only wine')
++              str(WINE_DIR) if pinned else '升级 WineHQ 可能让 UUWay 无法采集画面；运行 uuway setup --only wine')
+     check('ok' if uinput_usable() else 'fail', '/dev/uinput 可写', '' if uinput_usable()
+           else '运行 uuway setup --only udev；装好规则后可能需要重新登录')
+     for unit in ('gnome-remote-desktop', 'uu-remote-bridge'):
